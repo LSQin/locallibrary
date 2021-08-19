@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.deletion import RESTRICT
 from django.db.models.fields.related import ForeignKey
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Permission, User
 
 # Create your models here.
 class Genre(models.Model):
@@ -91,6 +91,11 @@ class BookInstance(models.Model):
 
     class Meta:
         ordering = ['due_back']
+        
+        # define a permission to allow a user to mark that a book has been returned.
+        permissions = (
+            ("can_mark_returned", "Set book as returned"),
+         )
     
     def __str__(self):
         """String for representing the Model object"""
