@@ -10,6 +10,7 @@
                     {{bookinstance.book.title}}
                 </a>
                 ({{bookinstance.due_back}}) - bookinstance.borrower
+                - <a href="{% url 'renew-book-librarian' bookinstance.id %}">Renew</a>
             </li> 
         {% endfor %}
         </ul>

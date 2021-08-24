@@ -6,8 +6,8 @@ urlpatterns = [
 
     path('books/', views.BookListView.as_view(), name="books"),
 
-    path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
-    # path('book/<pk>', views.BookDetailView.as_view(), name='book-detail'),
+    # path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
+    path('book/<pk>', views.BookDetailView.as_view(), name='book-detail'),
     # re_path(r'^book/(?P<pk>\d+)$', views.BookDetailView.as_view(), name='book-detail'),
 
     path('authors/', views.AuthorListView.as_view(), name="authors"),
@@ -21,4 +21,9 @@ urlpatterns += [
 
 urlpatterns += [
     path('borrowed/', views.AllBorrowedBooksListView.as_view(), name="all-borrowed"),
+]
+
+# Add a url configuration for the renew_books page.
+urlpatterns += [
+    path('book/<uuid:pk>/renew/', views.renew_book_librarian, name="renew-book-librarian"),
 ]
